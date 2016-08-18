@@ -11,6 +11,7 @@ public class Core {
 	
 	public static void main(String[] args) throws Exception{
 		
+			// Simple
 	 		//Retrieve First URL from the Excel Workbook where data is stored
 			StoreExcelData perfAssetsData = new StoreExcelData();
 			perfAssetsData.workBookName = "Core.xls";

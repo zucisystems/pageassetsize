@@ -95,17 +95,5 @@ public class ReadFromExcel {
 		}		
 		return cellValue;
 	}
-	
-	/*
-	public void closeExcelConnection(String workSheetName, String workBookName){
-		try {
-			fs.close();			
-		} catch (RuntimeException e) {			
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	*/
 }
 

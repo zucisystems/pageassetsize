@@ -11,12 +11,11 @@ public class Core {
 	
 	public static void main(String[] args) throws Exception{
 		
-			// Simple
 	 		//Retrieve First URL from the Excel Workbook where data is stored
 			StoreExcelData perfAssetsData = new StoreExcelData();
 			perfAssetsData.workBookName = "Core.xls";
 			perfAssetsData.workSheetName = "URLs";
-			perfAssetsData.sNo = "ID_1";
+			perfAssetsData.sNo = "ID_11";
 			perfAssetsData.fetchHomeTestData();
 			long a[] = null;
 
@@ -32,7 +31,7 @@ public class Core {
 			String strPath = dir.getCanonicalPath();
 			String path = strPath+File.separator+"src"+File.separator+"testresults"+File.separator+str;
 
-			for(int campaignCounter = 1; campaignCounter <= 40; campaignCounter++){
+			for(int campaignCounter = 11; campaignCounter <= 11; campaignCounter++){
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;
@@ -46,7 +45,7 @@ public class Core {
 				WebDriver wd = new WebDriver();
 				wd.harGenerator(perfAssetsData.URL, perfAssetsData.sNo, path);
 				a = wd.harReader();
-				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[0]+" , "+a[1]+" , "+a[2]+" , "+a[3]);
+				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[0]+" , "+a[1]+" , "+a[2]+" , "+a[3]+" , "+a[4]+" , "+a[5]+" , "+a[6]+" , "+a[7]);
 
 				// Fetch the next Email recipient Data
 				perfAssetsData.sNo = "ID_"+ (campaignCounter+1);

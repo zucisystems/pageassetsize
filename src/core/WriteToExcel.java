@@ -18,9 +18,13 @@ public class WriteToExcel {
 	        rowhead.createCell(0).setCellValue("S.No");
 	        rowhead.createCell(1).setCellValue("URL");
 	        rowhead.createCell(2).setCellValue("HTML Size (in KB)");
-	        rowhead.createCell(3).setCellValue("Image Size (in KB)");
+	        rowhead.createCell(3).setCellValue("CSS Size (in KB)");
 	        rowhead.createCell(4).setCellValue("JS Size (in KB)");
-	        rowhead.createCell(5).setCellValue("CSS Size (in KB)");
+	        rowhead.createCell(5).setCellValue("XHR Size (in KB)");
+	        rowhead.createCell(6).setCellValue("Image Size (in KB)");
+	        rowhead.createCell(7).setCellValue("Media Size (in KB)");
+	        rowhead.createCell(8).setCellValue("Font Size (in KB)");
+	        rowhead.createCell(9).setCellValue("Other Size (in KB)");
 	        headerCreated = true;
         }
         	rowhead = sheet1.createRow(writeExcelCounter);
@@ -29,12 +33,16 @@ public class WriteToExcel {
         	rowhead.createCell(2).setCellValue(a[0]);
         	rowhead.createCell(3).setCellValue(a[1]);
         	rowhead.createCell(4).setCellValue(a[2]);
-        	rowhead.createCell(5).setCellValue(a[3]);  
+        	rowhead.createCell(5).setCellValue(a[3]); 
+        	rowhead.createCell(6).setCellValue(a[4]);  
+        	rowhead.createCell(7).setCellValue(a[5]);  
+        	rowhead.createCell(8).setCellValue(a[6]);  
+        	rowhead.createCell(9).setCellValue(a[7]);  
 	     }
 	public void writeExcel(String str, HSSFWorkbook wb, String path){
 		String path1 = null;
 		try {
-			path1=path+File.separator+"Core1.xls";
+			path1=path+File.separator+"Page Assets.xls";
     		File file = new File(path1);
  
     		file.createNewFile();

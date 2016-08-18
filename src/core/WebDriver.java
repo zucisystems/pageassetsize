@@ -86,7 +86,7 @@ public class WebDriver {
 	      
 	      List<HarEntry> entries = log.getEntries().getEntries();
 	      for (HarEntry entry : entries){
-	    	  //System.out.println(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase());
+	    	  System.out.println(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase());
 	    	  
 	       if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("text/html")){
 	    	   htmlSize = htmlSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();

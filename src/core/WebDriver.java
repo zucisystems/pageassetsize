@@ -87,11 +87,11 @@ public class WebDriver {
 	    
 	    try
 	    {
-	        List<HarWarning> warnings = new ArrayList<HarWarning>();
-	        HarLog log = r.readHarFile(fis, warnings);
+	          List<HarWarning> warnings = new ArrayList<HarWarning>();
+	          HarLog log = r.readHarFile(fis, warnings);
 	        //HarLog log = r.readHarFile(fis);
-	        //for (HarWarning w : warnings) {
-	        //System.out.println("File:" + fis+ " - Warning:" + w);
+	       // for (HarWarning w : warnings) {
+	        // System.out.println("File:" + fis+ " - Warning:" + w);
 	      
 	      List<HarEntry> entries = log.getEntries().getEntries();
 	      for (HarEntry entry : entries){
@@ -117,7 +117,7 @@ public class WebDriver {
 	    	   otherSize = otherSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();	    	   
 	       }
 	      }  
-	       
+	     // } 
 	      htmlSize = htmlSize/1024;
 	      cssSize = cssSize/1024;
 	      jsSize = jsSize/1024;

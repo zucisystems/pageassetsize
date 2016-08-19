@@ -15,7 +15,7 @@ public class Core {
 			StoreExcelData perfAssetsData = new StoreExcelData();
 			perfAssetsData.workBookName = "Core.xls";
 			perfAssetsData.workSheetName = "URLs";
-			perfAssetsData.sNo = "ID_11";
+			perfAssetsData.sNo = "ID_1";
 			perfAssetsData.fetchHomeTestData();
 			long a[] = null;
 
@@ -31,7 +31,7 @@ public class Core {
 			String strPath = dir.getCanonicalPath();
 			String path = strPath+File.separator+"src"+File.separator+"testresults"+File.separator+str;
 
-			for(int campaignCounter = 11; campaignCounter <= 11; campaignCounter++){
+			for(int campaignCounter = 1; campaignCounter <= 40; campaignCounter++){
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;

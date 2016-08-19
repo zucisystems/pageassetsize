@@ -76,14 +76,6 @@ public class WebDriver {
 	 
 		FileInputStream fis = new FileInputStream(pathstr);
 	    HarFileReader r = new HarFileReader();
-	    
-	    try
-	    {
-	      List<HarWarning> warnings = new ArrayList<HarWarning>();
-	      HarLog log = r.readHarFile(fis, warnings);
-	      for (HarWarning w : warnings) {
-	        System.out.println("File:" + fis+ " - Warning:" + w);
-	      }
 	      long htmlSize = 0;
 	      long cssSize = 0;
 	      long jsSize = 0;
@@ -92,6 +84,14 @@ public class WebDriver {
 	      long mediaSize = 0;
 	      long fontSize = 0;
 	      long otherSize = 0;
+	    
+	    try
+	    {
+	        List<HarWarning> warnings = new ArrayList<HarWarning>();
+	        HarLog log = r.readHarFile(fis, warnings);
+	        //HarLog log = r.readHarFile(fis);
+	        //for (HarWarning w : warnings) {
+	        //System.out.println("File:" + fis+ " - Warning:" + w);
 	      
 	      List<HarEntry> entries = log.getEntries().getEntries();
 	      for (HarEntry entry : entries){
@@ -116,7 +116,8 @@ public class WebDriver {
 	       }else{
 	    	   otherSize = otherSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();	    	   
 	       }
-	     }
+	      }  
+	       
 	      htmlSize = htmlSize/1024;
 	      cssSize = cssSize/1024;
 	      jsSize = jsSize/1024;
@@ -134,7 +135,7 @@ public class WebDriver {
 	      ars[5] = mediaSize;
 	      ars[6] = fontSize;
 	      ars[7] = otherSize;
-	      
+	          
 	} catch (Exception e){
 		e.printStackTrace();
 	}

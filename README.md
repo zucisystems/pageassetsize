@@ -16,7 +16,7 @@
 
 	1. Selenium Web Driver (v2.53.0)
 	2. BrowserMob Proxy (v2.1.2)
-	3. HarLib (v1.1.2)
+	3. HarLib (v1.1.3)
 	4. HarReader(v2.0.1)
 	5. Apache POI (v3.14)
 	
@@ -50,7 +50,7 @@ The above are abailable under ../src/testresults/<date_time> of execution.
 	<dependency>
 	<groupId>edu.umass.cs.benchlab</groupId>
 	<artifactId>harlib</artifactId>
-	<version>1.1.2</version>
+	<version>1.1.3</version>
 	</dependency> 
 
 * **HarReader:**

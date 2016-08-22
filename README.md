@@ -2,8 +2,8 @@
 
 ## Introduction:
 
-  	Page Asset size helps to troubleshoot the performance issues in a web-page.
-	It gathers size of the content of Web pages using Selenium Web Driver and results are stored and dispalyed in XLS.
+  	Page Asset size helps to troubleshoot the performance issue in a web-page.
+	It gathers size of the content of Web pages using Selenium Web Driver and results are stored and displayed in XLS.
 
 ## Input:
 
@@ -13,8 +13,8 @@
 
 	Selenium Web Driver (v2.53.0)
 	BrowserMob Proxy (v2.1.2)
-	harlib (v1.1.2)
-	harreader(v2.0.1)
+	HarLib (v1.1.2)
+	HarReader(v2.0.1)
 	Apache POI (v3.14)
 
 ## Output:
@@ -47,8 +47,8 @@
 	</dependency>
 
 * **HarLib:**
-	HarLib is an open source Java library for the HTTP Archive Specification (HAR)
-	Read/write HAR files from Java
+	HarLib is an open source Java library for the HTTP Archive Specification (HAR).
+	Read/write HAR files from Java.
 	HarLib relies on Jackson for the parsing. 
 	
 	<dependency>
@@ -57,8 +57,8 @@
 	<version>1.1.2</version>
 	</dependency> 
 
-* **Har Reader:**
-	It is a Library for accessing HTTP Archives (HAR) with Java
+* **HarReader:**
+	It is a Library for accessing HTTP Archives (HAR) with Java.
 	
 	<dependency>
     	<groupId>de.sstoehr</groupId>
@@ -94,7 +94,7 @@
         
 ## How to Use it:
 
-* The user's input (URL's) are to be given in Spreadsheet as present in the location,
+* The user's input (URL's) are to be given in Spreadsheet, present in the location,
 	
 	Location : \src\data\ input-file (Core.xls)
 	

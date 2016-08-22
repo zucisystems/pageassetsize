@@ -93,6 +93,7 @@ Installation Details:
         <version>0.0.1-SNAPSHOT</version>
         
 How to Use it:
+
 	The user's input (URL's) are to be given in Spreadsheet as present in the location,
 	
 	Location : \src\data\ input-file (Core.xls)

@@ -26,7 +26,7 @@
 	2. The categorized assets sizes are stored into an excel
 The above are abailable under ../src/testresults/<date_time> of execution.
 
-## QUick Overview of Maven Dependencies
+## Quick Overview of Maven Dependencies
 
 * **Selenium Web Driver:**
 	Selenium-WebDriver helps in launching the Web Page and wait until its completely rendered

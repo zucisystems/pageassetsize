@@ -1,15 +1,15 @@
-# pageassetsize
+## pageassetsize
 
-Introduction:
+## Introduction:
 
   	Page Asset size helps to troubleshoot the performance issues in a web-page.
 	It gathers size of the content of Web pages using Selenium Web Driver and results are stored and dispalyed in XLS.
 
-Input:
+## Input:
 
 	Webpage URL whose performance has to be analysed is entered in spreasheet and it is used as input to this process.
 
-Tools Used:
+## Tools Used:
 
 	Selenium Web Driver (v2.53.0)
 	BrowserMob Proxy (v2.1.2)
@@ -17,14 +17,14 @@ Tools Used:
 	harreader(v2.0.1)
 	Apache POI (v3.14)
 
-Output:
+## Output:
 
 	HAR Size is acrnonym for HTTP Archive. HAR allows us to get the size of HTML, Image, Java-Script, CSS, Media and Font. 
 	The result is displayed in Spreadsheet.
 
-Tools in Detail:
+## Tools in Detail:
 
-	Selenium Web Driver:
+* **Selenium Web Driver:**
 	Selenium-WebDriver is a tool to support dynamic web pages where elements of a page may change without the page itself being reloaded.
 	
         <dependency>
@@ -33,7 +33,7 @@ Tools in Detail:
         <version>2.53.0</version>
         </dependency>
 
-	BrowserMob Proxy:
+* **BrowserMob Proxy:**
 	It can capture performance data for web apps (via the HAR format), 
 	manipulate browser behavior and traffic, 
 	such as whitelisting and blacklisting content, 
@@ -46,7 +46,7 @@ Tools in Detail:
 	<version>2.1.2</version>
 	</dependency>
 
-	HarLib:
+* **HarLib:**
 	HarLib is an open source Java library for the HTTP Archive Specification (HAR)
 	Read/write HAR files from Java
 	HarLib relies on Jackson for the parsing. 
@@ -57,7 +57,7 @@ Tools in Detail:
 	<version>1.1.2</version>
 	</dependency> 
 
-	Har Reader:
+* **Har Reader:**
 	It is a Library for accessing HTTP Archives (HAR) with Java
 	
 	<dependency>
@@ -66,7 +66,7 @@ Tools in Detail:
     	<version>2.0.1</version>
 	</dependency>
 
-	Apache POI: 
+* **Apache POI:**
 	Apache POI is an API that allows programmers to create, modify, and display MS Office (Spreadsheet) files using Java programs.
 	It is an open source library developed and distributed by Apache Software Foundation to design or modify Microsoft Office files using Java program. 
 	It contains classes and methods to decode the user input data or a file into MS Office (Spreadsheet) documents.
@@ -83,7 +83,7 @@ Tools in Detail:
 	<version>3.14</version>
 	</dependency>
 
-Installation Details:
+## Installation Details:
 
 	Include the library in your pom.xml, if you are using Maven
 	
@@ -92,26 +92,26 @@ Installation Details:
         <artifactId>pageassetsize</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         
-How to Use it:
+## How to Use it:
 
-	The user's input (URL's) are to be given in Spreadsheet as present in the location,
+* The user's input (URL's) are to be given in Spreadsheet as present in the location,
 	
 	Location : \src\data\ input-file (Core.xls)
 	
-	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Input-Snap.PNG)
+	![Input-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Input-Snap.PNG)
 	
-	Run the application by right-click on file, as follows,
+* Run the application by right-click on file, as follows,
 	
 	file name (Core.java) > Run As > Java Application
 	
-	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Run%20Application.jpg)
+	![Run Application](https://github.com/zucisystems/pageassetsize/blob/master/images/Run%20Application.jpg)
 	
-	The test results are stored in the location in Spreadsheet,
+* The test results are stored in the location in Spreadsheet,
 	
 	Location : \src\testresults\ dynamic-folder (Page Assets.xls)
 
-	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap.PNG)
+	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap.PNG)
 	
-Conclusion:
+## Conclusion:
 
 	This uses open source components and cost effective tool for analysing performance issues.

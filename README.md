@@ -2,7 +2,7 @@
 
 Introduction:
 
-  Page Asset size helps to troubleshoot the performance issues in a web-page.
+  	Page Asset size helps to troubleshoot the performance issues in a web-page.
 	It gathers size of the content of Web pages using Selenium Web Driver and results are stored and dispalyed in XLS.
 
 Input:
@@ -28,10 +28,10 @@ Tools in Detail:
 	Selenium-WebDriver is a tool to support dynamic web pages where elements of a page may change without the page itself being reloaded.
 	
   	<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>2.53.0</version>
-    </dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>2.53.0</version>
+    	</dependency>
 
 	BrowserMob Proxy:
 	It can capture performance data for web apps (via the HAR format), 
@@ -41,9 +41,9 @@ Tools in Detail:
 	and rewriting HTTP requests and responses.
 	
   	<dependency>
-		<groupId>net.lightbody.bmp</groupId>
-		<artifactId>browsermob-core</artifactId>
-		<version>2.1.2</version>
+	<groupId>net.lightbody.bmp</groupId>
+	<artifactId>browsermob-core</artifactId>
+	<version>2.1.2</version>
   	</dependency>
 
 	HarLib:
@@ -51,20 +51,20 @@ Tools in Detail:
 	Read/write HAR files from Java
 	HarLib relies on Jackson for the parsing. 
 	
-	  <dependency>
-	  <groupId>edu.umass.cs.benchlab</groupId>
-	  <artifactId>harlib</artifactId>
-	  <version>1.1.2</version>
-  	 </dependency> 
+	<dependency>
+	<groupId>edu.umass.cs.benchlab</groupId>
+	<artifactId>harlib</artifactId>
+	<version>1.1.2</version>
+  	</dependency> 
 
 	Har Reader:
 	It is a Library for accessing HTTP Archives (HAR) with Java
 	
-	  <dependency>
-    <groupId>de.sstoehr</groupId>
-    <artifactId>har-reader</artifactId>
-    <version>2.0.1</version>
-	  </dependency>
+	<dependency>
+	<groupId>de.sstoehr</groupId>
+	<artifactId>har-reader</artifactId>
+	<version>2.0.1</version>
+	</dependency>
 
 
 	Apache POI: 
@@ -72,26 +72,26 @@ Tools in Detail:
 	It is an open source library developed and distributed by Apache Software Foundation to design or modify Microsoft Office files using Java program. 
 	It contains classes and methods to decode the user input data or a file into MS Office (Spreadsheet) documents.
 	
-    <dependency>
-	  <groupId>org.apache.poi</groupId>
-		<artifactId>poi</artifactId>
-	  <version>3.14</version>
-	  </dependency>
+    	<dependency>
+	<groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+	<version>3.14</version>
+	</dependency>
 	
-	  <dependency>
-	  <groupId>org.apache.poi</groupId>
-	  <artifactId>poi-ooxml</artifactId>
- 		<version>3.14</version>
-	  </dependency>
+	<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-ooxml</artifactId>
+ 	<version>3.14</version>
+	</dependency>
 
 Installation Details:
 
 	Include the library in your pom.xml, if you are using Maven
 	
-	  <modelVersion>4.0.0</modelVersion>
-    <groupId>pageassetsize</groupId>
-    <artifactId>pageassetsize</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+        <modelVersion>4.0.0</modelVersion>
+        <groupId>pageassetsize</groupId>
+        <artifactId>pageassetsize</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
 
 Conclusion:
 

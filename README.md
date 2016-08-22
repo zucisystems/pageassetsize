@@ -2,8 +2,11 @@
 
 ## Introduction:
 
-  	Page Asset size helps to troubleshoot the performance issue in a web-page.
-	It gathers size of the content of Web pages using Selenium Web Driver and results are stored and displayed in XLS.
+  	Page Asset size program helps in calculating the total size of assets in a web page categorized by Image, HTML, Javascript, CSS, Media, Font, XHR etc. 
+  	
+  	Can't this be done by a Firebug or a developer tool? Yes, it can be done, just imagine you are a company playing with thousands of dynamic URLs, how would you do it with ease?
+  	
+  	Another example of a e-commerce reatil engineering team wants to look for page assets based on variety of keywords, how it can be done in an automated fashion?
 
 ## Input:
 
@@ -11,22 +14,22 @@
 
 ## Tools Used:
 
-	Selenium Web Driver (v2.53.0)
-	BrowserMob Proxy (v2.1.2)
-	HarLib (v1.1.2)
-	HarReader(v2.0.1)
-	Apache POI (v3.14)
-
+	1. Selenium Web Driver (v2.53.0)
+	2. BrowserMob Proxy (v2.1.2)
+	3. HarLib (v1.1.2)
+	4. HarReader(v2.0.1)
+	5. Apache POI (v3.14)
+	
 ## Output:
 
-	HAR Size, HAR is acronym for HTTP Archive. HAR allows us to get the size of HTML, Image, Java-Script, CSS, Media and Font. 
-	The result is displayed in Spreadsheet.
+	1. HAR (HTTP Archive) File. HAR captures the finer details of various page assets like HTML, Image, Java-Script, CSS, Media and Font.
+	2. The categorized assets sizes are stored into an excel
+The above are abailable under ../src/testresults/<date_time> of execution.
 
-## Tools in Detail:
+## QUick Overview of Maven Dependencies
 
 * **Selenium Web Driver:**
-	Selenium-WebDriver is a tool to support dynamic web pages where elements of a page may change without the page itself being reloaded.
-	
+	Selenium-WebDriver helps in launching the Web Page and wait until its completely rendered
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
@@ -34,23 +37,16 @@
         </dependency>
 
 * **BrowserMob Proxy:**
-	It can capture performance data for web apps (via the HAR format), 
-	manipulate browser behavior and traffic, 
-	such as whitelisting and blacklisting content, 
-	simulating network traffic and latency, 
-	and rewriting HTTP requests and responses.
-	
+	Browser-Mob Proxy captures the network traffic as an when the Page is loaded using Web Driver.
 	<dependency>
 	<groupId>net.lightbody.bmp</groupId>
 	<artifactId>browsermob-core</artifactId>
 	<version>2.1.2</version>
 	</dependency>
 
-* **HarLib:**
-	HarLib is an open source Java library for the HTTP Archive Specification (HAR).
-	Read/write HAR files from Java.
+* **HarLib and Jackson:**
+	HarLib is an open source Java library for to Read/write HAR files in Java.
 	HarLib relies on Jackson for the parsing. 
-	
 	<dependency>
 	<groupId>edu.umass.cs.benchlab</groupId>
 	<artifactId>harlib</artifactId>
@@ -59,7 +55,6 @@
 
 * **HarReader:**
 	It is a Library for accessing HTTP Archives (HAR) with Java.
-	
 	<dependency>
     	<groupId>de.sstoehr</groupId>
     	<artifactId>har-reader</artifactId>

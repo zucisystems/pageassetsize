@@ -93,6 +93,13 @@ Installation Details:
         <artifactId>pageassetsize</artifactId>
         <version>0.0.1-SNAPSHOT</version>
 
+How to Use it:
+	
+	Enter the Inputs (URL's) in the specified Spreadsheet,
+	
+	Location : src\data\Core.xls
+
+
 Conclusion:
 
 	This uses open source components and cost effective tool for analysing performance issues.

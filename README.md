@@ -7,7 +7,7 @@ Introduction:
 
 Input:
 
-	Webpages URL whose performance has to be analysed is entered in spreasheet and it is used as input to this process.
+	Webpage URL whose performance has to be analysed is entered in spreasheet and it is used as input to this process.
 
 Tools Used:
 

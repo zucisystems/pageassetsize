@@ -1,4 +1,4 @@
-## pageassetsize
+## Page Asset Size
 
 ## Introduction:
 
@@ -19,7 +19,7 @@
 
 ## Output:
 
-	HAR Size is acrnonym for HTTP Archive. HAR allows us to get the size of HTML, Image, Java-Script, CSS, Media and Font. 
+	HAR Size, HAR is acronym for HTTP Archive. HAR allows us to get the size of HTML, Image, Java-Script, CSS, Media and Font. 
 	The result is displayed in Spreadsheet.
 
 ## Tools in Detail:

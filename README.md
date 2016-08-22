@@ -98,19 +98,19 @@ How to Use it:
 	
 	Location : \src\data\ input-file (Core.xls)
 	
-	![Input-Snap](Input-Snap.png)
+	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Input-Snap.PNG)
 	
 	Run the application by right-click on file, as follows,
 	
 	file name (Core.java) > Run As > Java Application
 	
-	![Screenshot](Run Application.jpg)
+	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Run%20Application.jpg)
 	
 	The test results are stored in the location in Spreadsheet,
 	
 	Location : \src\testresults\ dynamic-folder (Page Assets.xls)
 
-	![Result-Snap](Result-Snap.png)
+	![alt tag](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap.PNG)
 	
 Conclusion:
 

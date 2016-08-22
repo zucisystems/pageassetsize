@@ -98,14 +98,20 @@ How to Use it:
 	
 	Location : \src\data\ input-file (Core.xls)
 	
+	![Input-Snap](Input-Snap.png)
+	
 	Run the application by right-click on file, as follows,
 	
 	file name (Core.java) > Run As > Java Application
+	
+	![Screenshot](Run Application.jpg)
 	
 	The test results are stored in the location in Spreadsheet,
 	
 	Location : \src\testresults\ dynamic-folder (Page Assets.xls)
 
+	![Result-Snap](Result-Snap.png)
+	
 Conclusion:
 
 	This uses open source components and cost effective tool for analysing performance issues.

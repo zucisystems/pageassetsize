@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class WriteToExcel {
 	
-	public void writeToExcel(HSSFSheet sheet1, long[] a, String tempSlNo, String tempURL, int writeExcelCounter){
+	public void writeToExcel(HSSFSheet sheet1,HSSFSheet sheet2, long[] a, String tempSlNo, String tempURL, int writeExcelCounter){
         
         // Create Heading
         boolean headerCreated = false;
@@ -37,8 +37,35 @@ public class WriteToExcel {
         	rowhead.createCell(6).setCellValue(a[4]);  
         	rowhead.createCell(7).setCellValue(a[5]);  
         	rowhead.createCell(8).setCellValue(a[6]);  
-        	rowhead.createCell(9).setCellValue(a[7]);  
-	     }
+        	rowhead.createCell(9).setCellValue(a[7]);
+	boolean headerCreated1 = false;
+    Row rowhead1 = null;
+	if(!headerCreated1){
+        	rowhead1 = sheet2.createRow(0);
+        	rowhead1.createCell(0).setCellValue("S.No");
+        	rowhead1.createCell(1).setCellValue("URL");
+        	rowhead1.createCell(2).setCellValue("HTML Time (in Seconds)");
+        	rowhead1.createCell(3).setCellValue("CSS Time (in Seconds)");
+        	rowhead1.createCell(4).setCellValue("JS Time (in Seconds)");
+        	rowhead1.createCell(5).setCellValue("XHR Time (in Seconds)");
+        	rowhead1.createCell(6).setCellValue("Image Time (in Seconds)");
+        	rowhead1.createCell(7).setCellValue("Media Time (in Seconds)");
+        	rowhead1.createCell(8).setCellValue("Font Time (in Seconds)");
+        	rowhead1.createCell(9).setCellValue("Other Time (in Seconds)");
+        	headerCreated1 = true;
+		}
+			rowhead1 = sheet2.createRow(writeExcelCounter);
+			rowhead1.createCell(0).setCellValue(tempSlNo);
+			rowhead1.createCell(1).setCellValue(tempURL);
+			rowhead1.createCell(2).setCellValue(a[8]);
+			rowhead1.createCell(3).setCellValue(a[9]);
+			rowhead1.createCell(4).setCellValue(a[10]);
+			rowhead1.createCell(5).setCellValue(a[11]); 
+			rowhead1.createCell(6).setCellValue(a[12]);  
+			rowhead1.createCell(7).setCellValue(a[13]);  
+			rowhead1.createCell(8).setCellValue(a[14]);  
+			rowhead1.createCell(9).setCellValue(a[15]);
+	}
 	public void writeExcel(String str, HSSFWorkbook wb, String path){
 		String path1 = null;
 		try {

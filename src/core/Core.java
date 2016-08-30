@@ -21,7 +21,8 @@ public class Core {
 
 			WriteToExcel wxl = new WriteToExcel();
 			HSSFWorkbook wb = new HSSFWorkbook();
-			HSSFSheet sheet1 = wb.createSheet("Core Value");
+			HSSFSheet sheet1 = wb.createSheet("Core Size");
+			HSSFSheet sheet2 = wb.createSheet("Core Time");
 			int writeExcelCounter = 1;
 
 			Date date = new Date() ;
@@ -31,7 +32,7 @@ public class Core {
 			String strPath = dir.getCanonicalPath();
 			String path = strPath+File.separator+"src"+File.separator+"testresults"+File.separator+str;
 
-			for(int campaignCounter = 1; campaignCounter <= 40; campaignCounter++){
+			for(int campaignCounter = 1; campaignCounter <= 1; campaignCounter++){
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;
@@ -46,13 +47,14 @@ public class Core {
 				wd.harGenerator(perfAssetsData.URL, perfAssetsData.sNo, path);
 				a = wd.harReader();
 				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[0]+" , "+a[1]+" , "+a[2]+" , "+a[3]+" , "+a[4]+" , "+a[5]+" , "+a[6]+" , "+a[7]);
-
+				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[8]+" , "+a[9]+" , "+a[10]+" , "+a[11]+" , "+a[12]+" , "+a[13]+" , "+a[14]+" , "+a[15]);
+				
 				// Fetch the next Email recipient Data
 				perfAssetsData.sNo = "ID_"+ (campaignCounter+1);
 				perfAssetsData.fetchHomeTestData();
 
 				/* Write Values to Excel */
-				wxl.writeToExcel(sheet1,a,tempSlNo,tempURL,writeExcelCounter);
+				wxl.writeToExcel(sheet1,sheet2,a,tempSlNo,tempURL,writeExcelCounter);
 				writeExcelCounter++;
 			}
 			wxl.writeExcel(str, wb, path);

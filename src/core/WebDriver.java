@@ -22,8 +22,7 @@ import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
 
 public class WebDriver {
-	
-	public long[] ars = {0,0,0,0,0,0,0,0};
+	public long[] ars = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	String pathstr = null;
 	
 	@SuppressWarnings({"static-access" })
@@ -85,6 +84,14 @@ public class WebDriver {
 	      long fontSize = 0;
 	      long otherSize = 0;
 	    
+	      long htmlTime = 0;
+	      long cssTime = 0;
+	      long jsTime = 0;
+	      long xhrTime = 0;
+	      long imageTime = 0;
+	      long mediaTime = 0;
+	      long fontTime = 0;
+	      long otherTime = 0;
 	    try
 	    {
 	          List<HarWarning> warnings = new ArrayList<HarWarning>();
@@ -99,22 +106,31 @@ public class WebDriver {
 	    	  
 	       if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("text/html")){
 	    	   htmlSize = htmlSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   htmlTime = htmlTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("text/css")){
 	    	   cssSize = cssSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   cssTime = cssTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("javascript")){
 	    	   jsSize = jsSize  + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   jsTime = jsTime + entry.getTime();
 		   }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("xhr")){
 	    	   xhrSize = xhrSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   xhrTime = xhrTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("image")){
 	    	   imageSize = imageSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   imageTime = imageTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("video")){
 	    	   mediaSize = mediaSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   mediaTime = mediaTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("font")){
 	    	   fontSize = fontSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   fontTime = fontTime + entry.getTime();
 	       }else if(entry.getResponse().getContent().getMimeType().trim().toString().toLowerCase().contains("application")){
 	    	   otherSize = otherSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   otherTime = otherTime + entry.getTime();
 	       }else{
-	    	   otherSize = otherSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();	    	   
+	    	   otherSize = otherSize + entry.getResponse().getBodySize() + entry.getResponse().getHeadersSize();
+	    	   otherTime = otherTime + entry.getTime();
 	       }
 	      }  
 	     // } 
@@ -135,10 +151,28 @@ public class WebDriver {
 	      ars[5] = mediaSize;
 	      ars[6] = fontSize;
 	      ars[7] = otherSize;
-	          
+	      
+	      htmlTime = htmlTime/1000;
+	      cssTime = cssTime/1000;
+	      jsTime = jsTime/1000;
+	      xhrTime = xhrTime/1000;
+	      imageTime = imageTime/1000;
+	      mediaTime = mediaTime/1000;
+	      fontTime = fontTime/1000;
+	      otherTime = otherTime/1000;
+	      
+	      ars[8] = htmlTime;
+	      ars[9] = cssTime;
+	      ars[10] = jsTime;
+	      ars[11] = xhrTime;
+	      ars[12] = imageTime;
+	      ars[13] = mediaTime;
+	      ars[14] = fontTime;
+	      ars[15] = otherTime;
+	      
 	} catch (Exception e){
 		e.printStackTrace();
-	}
-		     return ars;
+	}        
+	return ars;
 	}
 }

@@ -4,17 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Proxy;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -30,16 +27,15 @@ import net.lightbody.bmp.core.har.Har;
 public class WebDriver {
 	public long[] ars = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	String pathstr = null;
-	InputStream is;
+	FileInputStream fis = null;
 	
-	@SuppressWarnings({"static-access" })
-	public void harGenerator(String url, String sNo, String browser, String path) throws NoSuchElementException, Exception {
+	@SuppressWarnings({"static-access", "unused" })
+	public void harGenerator(String url, String sNo, String useragent, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
 		DesiredCapabilities capabilities = null;
 		RemoteWebDriver driver = null;
-		//Properties prop = new Properties();
-		//String propfn = "browser.properties";
+		boolean isEmpty = false;
 		
 		try{
 			server.start();
@@ -47,41 +43,40 @@ public class WebDriver {
 			/*			Get the Selenium Proxy Object			*/
 			Proxy proxy = ClientUtil.createSeleniumProxy(server);
 		
+			//fis = getClass().getClassLoader().getResourceAsStream(propfn);
+			Properties prop = new Properties();
+			fis = new FileInputStream("useragent.properties");
+			if(fis != null){
+				prop.load(fis);
+				} else {
+					throw new FileNotFoundException("property file" + fis + "not found");
+				}
 
 			/*			Associating Browser Capabilities			*/	
-			if(browser.equalsIgnoreCase("firefox")){
+			if(useragent.equals(isEmpty)){
+				driver.get(prop.getProperty("default"));
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities);
-			} else if (browser.equalsIgnoreCase("chrome")) {
-				ChromeOptions options = new ChromeOptions();
-				capabilities = new DesiredCapabilities().chrome();
-				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-				System.setProperty("webdriver.chrome.driver", "D:\\Softwares Setup Files\\Softwares\\New folder\\chromedriver.exe");
-				driver = new ChromeDriver(capabilities);
-			}else if (browser.equalsIgnoreCase("ie")) {
-				capabilities = new DesiredCapabilities().internetExplorer();
-				capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-				System.setProperty("webdriver.ie.driver", "D:\\Softwares Setup Files\\Softwares\\New folder\\IEDriverServer.exe");
-				driver = new InternetExplorerDriver(capabilities);
-			}else if (browser.equalsIgnoreCase("android")) {
+				driver = new FirefoxDriver(capabilities); 
+				isEmpty = true;
+			}else if(useragent.equalsIgnoreCase("firefox")){
+				capabilities = new DesiredCapabilities().firefox();
+				capabilities.setCapability(CapabilityType.PROXY, proxy);
+			}else if (useragent.equalsIgnoreCase("android")) {
 				capabilities = new DesiredCapabilities().android();
+				capabilities.setCapability("deviceName","Android Emulator");
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new RemoteWebDriver(capabilities);
-			}else if (browser.equalsIgnoreCase("iphone")) {
+			}else if (useragent.equalsIgnoreCase("iphone")) {
 				capabilities = new DesiredCapabilities().iphone();
+				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new RemoteWebDriver(capabilities);
-			}else if (browser.equalsIgnoreCase("ipad")) {
+			}else if (useragent.equalsIgnoreCase("ipad")) {
 				capabilities = new DesiredCapabilities().ipad();
+				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new RemoteWebDriver(capabilities);
-			} else {
-				capabilities = new DesiredCapabilities().firefox();
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities);
-			}
-			
+				 driver = new RemoteWebDriver(capabilities);
+			} 
+			 driver = new FirefoxDriver(capabilities);
 			/*			Capturing Performance Assets			*/
 			server.newHar(url);
 			driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);

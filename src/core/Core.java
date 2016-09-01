@@ -32,7 +32,7 @@ public class Core {
 			String strPath = dir.getCanonicalPath();
 			String path = strPath+File.separator+"src"+File.separator+"testresults"+File.separator+str;
 
-			for(int campaignCounter = 1; campaignCounter <= 40; campaignCounter++){
+			for(int campaignCounter = 1; campaignCounter <= 4; campaignCounter++){
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;

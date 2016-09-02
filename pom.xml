@@ -3,12 +3,7 @@
   <groupId>pageassetsize</groupId>
   <artifactId>pageassetsize</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-		<dependency>
-		    <groupId>edu.umass.cs.benchlab</groupId>
-		    <artifactId>harlib</artifactId>
-		    <version>1.1.2</version>
-		</dependency> 
+  <dependencies> 
 		<dependency>
 		    <groupId>edu.umass.cs.benchlab</groupId>
 		    <artifactId>harlib</artifactId>
@@ -39,7 +34,7 @@
 		    <artifactId>poi-ooxml</artifactId>
  	   		<version>3.14</version>
 		</dependency>
-    </dependencies>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>

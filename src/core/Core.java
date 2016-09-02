@@ -9,6 +9,10 @@ import core.StoreExcelData;
 
 public class Core {
 	
+	/**
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception{
 		
 	 		//Retrieve First URL from the Excel Workbook where data is stored
@@ -32,7 +36,7 @@ public class Core {
 			String strPath = dir.getCanonicalPath();
 			String path = strPath+File.separator+"src"+File.separator+"testresults"+File.separator+str;
 
-			for(int campaignCounter = 1; campaignCounter <= 4; campaignCounter++){
+			for(int campaignCounter = 1; campaignCounter <= 40; campaignCounter++){
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;

@@ -58,15 +58,15 @@ public class WebDriver {
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("android")){			
-			capabilities = new DesiredCapabilities().firefox();
+			capabilities = new DesiredCapabilities().android();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("iphone")){			
-			capabilities = new DesiredCapabilities().firefox();
+			capabilities = new DesiredCapabilities().iphone();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("ipad")){			
-			capabilities = new DesiredCapabilities().firefox();
+			capabilities = new DesiredCapabilities().ipad();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			}

@@ -50,27 +50,22 @@ public class WebDriver {
 			
 			if(useragent.isEmpty()){
 				useragent = prop.getProperty("default");
-				System.out.println("hi");
 			}
 			
 			/*			Associating Browser Capabilities			*/
 			if(useragent.contentEquals("firefox")){			
-				System.out.println("hii");
 			capabilities = new DesiredCapabilities().firefox();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("android")){			
-				System.out.println("hiiii");
 			capabilities = new DesiredCapabilities().firefox();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("iphone")){			
-				System.out.println("hiiiii");
 			capabilities = new DesiredCapabilities().firefox();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("ipad")){			
-				System.out.println("hiiiiii");
 			capabilities = new DesiredCapabilities().firefox();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 

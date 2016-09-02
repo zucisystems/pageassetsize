@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -29,55 +30,53 @@ public class WebDriver {
 	String pathstr = null;
 	FileInputStream fis = null;
 	
-	@SuppressWarnings({"static-access", "unused" })
+	@SuppressWarnings({"static-access" })
 	public void harGenerator(String url, String sNo, String useragent, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
 		DesiredCapabilities capabilities = null;
 		RemoteWebDriver driver = null;
-		boolean isEmpty = false;
+		Properties prop = new Properties();
+		InputStream is = null;
 		
 		try{
 			server.start();
 	
 			/*			Get the Selenium Proxy Object			*/
 			Proxy proxy = ClientUtil.createSeleniumProxy(server);
-		
-			//fis = getClass().getClassLoader().getResourceAsStream(propfn);
-			Properties prop = new Properties();
-			fis = new FileInputStream("useragent.properties");
-			if(fis != null){
-				prop.load(fis);
-				} else {
-					throw new FileNotFoundException("property file" + fis + "not found");
-				}
-
-			/*			Associating Browser Capabilities			*/	
-			if(useragent.equals(isEmpty)){
-				driver.get(prop.getProperty("default"));
-				capabilities = new DesiredCapabilities().firefox();
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities); 
-				isEmpty = true;
-			}else if(useragent.equalsIgnoreCase("firefox")){
-				capabilities = new DesiredCapabilities().firefox();
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-			}else if (useragent.equalsIgnoreCase("android")) {
-				capabilities = new DesiredCapabilities().android();
-				capabilities.setCapability("deviceName","Android Emulator");
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-			}else if (useragent.equalsIgnoreCase("iphone")) {
-				capabilities = new DesiredCapabilities().iphone();
-				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-			}else if (useragent.equalsIgnoreCase("ipad")) {
-				capabilities = new DesiredCapabilities().ipad();
-				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				 driver = new RemoteWebDriver(capabilities);
-			} 
-			 driver = new FirefoxDriver(capabilities);
-			/*			Capturing Performance Assets			*/
+			
+			is = new FileInputStream("useragent.properties");
+			prop.load(is);
+			
+			if(useragent.isEmpty()){
+				useragent = prop.getProperty("default");
+				System.out.println("hi");
+			}
+			
+			/*			Associating Browser Capabilities			*/
+			if(useragent.contentEquals("firefox")){			
+				System.out.println("hii");
+			capabilities = new DesiredCapabilities().firefox();
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new FirefoxDriver(capabilities); 
+			} else if(useragent.contentEquals("android")){			
+				System.out.println("hiiii");
+			capabilities = new DesiredCapabilities().firefox();
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new FirefoxDriver(capabilities); 
+			} else if(useragent.contentEquals("iphone")){			
+				System.out.println("hiiiii");
+			capabilities = new DesiredCapabilities().firefox();
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new FirefoxDriver(capabilities); 
+			} else if(useragent.contentEquals("ipad")){			
+				System.out.println("hiiiiii");
+			capabilities = new DesiredCapabilities().firefox();
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new FirefoxDriver(capabilities); 
+			}
+			
+			/*			Capturing Performance Assets	*/		
 			server.newHar(url);
 			driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
 			driver.get(url);

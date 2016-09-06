@@ -12,7 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Proxy;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -57,16 +60,33 @@ public class WebDriver {
 			capabilities = new DesiredCapabilities().firefox();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
+			} else if(useragent.contentEquals("chrome")){			
+			capabilities = new DesiredCapabilities().chrome();
+			ChromeOptions options = new ChromeOptions();
+			System.setProperty("webdriver.chrome.driver","D:\\Softwares Setup Files\\Softwares\\New folder\\chromedriver.exe");
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new ChromeDriver(capabilities); 
+			}else if(useragent.contentEquals("ie")){			
+			capabilities = new DesiredCapabilities().internetExplorer();
+			System.setProperty("webdriver.ie.driver","D:\\Softwares Setup Files\\Softwares\\New folder\\IEDriverServer.exe" );
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+			//capabilities.setCapability(CapabilityType.PROXY, proxy);
+			driver = new InternetExplorerDriver(capabilities); 
 			} else if(useragent.contentEquals("android")){			
 			capabilities = new DesiredCapabilities().android();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("iphone")){			
 			capabilities = new DesiredCapabilities().iphone();
+			//capabilities.setCapability(CapabilityType.BROWSER_NAME, "iphone");
+			capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			} else if(useragent.contentEquals("ipad")){			
 			capabilities = new DesiredCapabilities().ipad();
+			capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities); 
 			}

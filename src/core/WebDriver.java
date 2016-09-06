@@ -71,8 +71,8 @@ public class WebDriver {
 			capabilities = new DesiredCapabilities().internetExplorer();
 			System.setProperty("webdriver.ie.driver","D:\\Softwares Setup Files\\Softwares\\New folder\\IEDriverServer.exe" );
 			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-			capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
-			//capabilities.setCapability(CapabilityType.PROXY, proxy);
+			//capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new InternetExplorerDriver(capabilities); 
 			} else if(useragent.contentEquals("android")){			
 			capabilities = new DesiredCapabilities().android();

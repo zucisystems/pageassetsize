@@ -39,7 +39,7 @@ public class WebDriver {
 		RemoteWebDriver driver = null;
 		Properties prop = new Properties();
 		InputStream is = null;
-		//String userAgent = "iphone";
+		String ua = "Nexus 5";
 		
 		try{
 			server.start();
@@ -53,12 +53,27 @@ public class WebDriver {
 			if(useragent.isEmpty()){
 				useragent = prop.getProperty("default");
 				System.out.println(useragent);
+			} else if(useragent.contains("android_mobile")){
+				useragent = prop.getProperty("Android_Mobile");
+				System.out.println(useragent);
+			} else if(useragent.contains("android_tablet")){
+				useragent = prop.getProperty("Android_Tablet");
+				System.out.println(useragent);
+			} else if(useragent.contains("iphone")){
+				useragent = prop.getProperty("iPhone");
+				System.out.println(useragent);
+			} else if(useragent.contains("ipad")){
+				useragent = prop.getProperty("iPad");
+				System.out.println(useragent);
 			} 
 			
+			
 			/*			Associating Browser Capabilities	*/		
-			if(useragent.contains("win64")){			
+			if(useragent.contains(ua)){	
+				System.out.println(useragent);
+				System.out.println(ua);
 				FirefoxProfile profile = new FirefoxProfile();
-				profile.setPreference("general.useragent.override","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.89 Safari/537.36");
+				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);

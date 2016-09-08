@@ -39,7 +39,6 @@ public class WebDriver {
 		RemoteWebDriver driver = null;
 		Properties prop = new Properties();
 		InputStream is = null;
-		String ua = "Nexus 5";
 		
 		try{
 			server.start();
@@ -52,6 +51,9 @@ public class WebDriver {
 			
 			if(useragent.isEmpty()){
 				useragent = prop.getProperty("default");
+				System.out.println(useragent);
+			} else if(useragent.contains("win")){
+				useragent = prop.getProperty("desktop");
 				System.out.println(useragent);
 			} else if(useragent.contains("android_mobile")){
 				useragent = prop.getProperty("Android_Mobile");
@@ -69,16 +71,12 @@ public class WebDriver {
 			
 			
 			/*			Associating Browser Capabilities	*/		
-			if(useragent.contains(ua)){	
-				System.out.println(useragent);
-				System.out.println(ua);
 				FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				driver = new FirefoxDriver(capabilities); 
-			} 
 			 
 			/*			Capturing Performance Assets	*/		
 			server.newHar(url);

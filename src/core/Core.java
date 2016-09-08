@@ -40,6 +40,7 @@ public class Core {
 	
 				String tempSlNo = perfAssetsData.sNo;
 				String tempURL = perfAssetsData.URL;
+				String tempdt = perfAssetsData.DeviceType;
 				String tempua = perfAssetsData.UserAgent;
 	
 				perfAssetsData.URL = perfAssetsData.URL == null ? "" : perfAssetsData.URL.trim();
@@ -59,7 +60,7 @@ public class Core {
 				perfAssetsData.fetchHomeTestData();
 
 				/* Write Values to Excel */
-				wxl.writeToExcel(sheet1,sheet2,a,tempSlNo,tempURL,tempua,writeExcelCounter);
+				wxl.writeToExcel(sheet1,sheet2,a,tempSlNo,tempURL,tempdt,tempua,writeExcelCounter);
 				writeExcelCounter++;
 			}
 			wxl.writeExcel(str, wb, path);

@@ -12,6 +12,7 @@ public class StoreExcelData {
 	public String workSheetName = null;
 	public String URL = null;
 	public String workBookName = null;
+	public String DeviceType = null;
 	public String UserAgent = null;
 	public Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
 	public Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
@@ -75,6 +76,7 @@ public class StoreExcelData {
 							if(tempSNo.equals(sNo)){
 								isDataFound = true;
 									URL = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("URL")));
+									DeviceType = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("Device Type")));
 									UserAgent = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("User Agent")));
                                     break;
 							}else {
@@ -133,6 +135,7 @@ public class StoreExcelData {
 							if(tempSNo.equals(sNo) && tempSNo.equals(URL)){
 								isRecordFound = true;
 									URL = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("URL")));
+									DeviceType = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("Device Type")));
 									UserAgent = readTestData.convertHSSFCellToString(row.getCell(excelHeaders.get("User Agent")));
                                     break;
 							}else {

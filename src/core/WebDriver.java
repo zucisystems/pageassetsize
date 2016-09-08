@@ -50,18 +50,18 @@ public class WebDriver {
 			prop.load(is);
 			
 			if(useragent.isEmpty()){
-				useragent = prop.getProperty("default");
-			} else if(useragent.contains("win")){
-				useragent = prop.getProperty("desktop");
-			} else if(useragent.contains("android_mobile")){
-				useragent = prop.getProperty("Android_Mobile");
-			} else if(useragent.contains("android_tablet")){
-				useragent = prop.getProperty("Android_Tablet");
-			} else if(useragent.contains("iphone")){
-				useragent = prop.getProperty("iPhone");
-			} else if(useragent.contains("ipad")){
-				useragent = prop.getProperty("iPad");		
-			} 
+					useragent = prop.getProperty("default");
+				} else if(useragent.contains("win")){
+					useragent = prop.getProperty("desktop");
+				} else if(useragent.contains("android_mobile")){
+					useragent = prop.getProperty("Android_Mobile");
+				} else if(useragent.contains("android_tablet")){
+					useragent = prop.getProperty("Android_Tablet");
+				} else if(useragent.contains("iphone")){
+					useragent = prop.getProperty("iPhone");
+				} else if(useragent.contains("ipad")){
+					useragent = prop.getProperty("iPad");		
+				} 
 			
 			/*			Associating Browser Capabilities	*/		
 				FirefoxProfile profile = new FirefoxProfile();

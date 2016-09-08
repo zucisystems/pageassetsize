@@ -51,24 +51,17 @@ public class WebDriver {
 			
 			if(useragent.isEmpty()){
 				useragent = prop.getProperty("default");
-				System.out.println(useragent);
 			} else if(useragent.contains("win")){
 				useragent = prop.getProperty("desktop");
-				System.out.println(useragent);
 			} else if(useragent.contains("android_mobile")){
 				useragent = prop.getProperty("Android_Mobile");
-				System.out.println(useragent);
 			} else if(useragent.contains("android_tablet")){
 				useragent = prop.getProperty("Android_Tablet");
-				System.out.println(useragent);
 			} else if(useragent.contains("iphone")){
 				useragent = prop.getProperty("iPhone");
-				System.out.println(useragent);
 			} else if(useragent.contains("ipad")){
-				useragent = prop.getProperty("iPad");
-				System.out.println(useragent);
+				useragent = prop.getProperty("iPad");		
 			} 
-			
 			
 			/*			Associating Browser Capabilities	*/		
 				FirefoxProfile profile = new FirefoxProfile();

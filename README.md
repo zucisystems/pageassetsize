@@ -105,12 +105,15 @@ The above are abailable under ../src/testresults/<date_time> of execution.
 	![Run Application](https://github.com/zucisystems/pageassetsize/blob/master/images/Run%20Application.jpg)
 	
 * The test results are stored in the location in Spreadsheet,
-	1. Result showing Size of each Asset group tested in different User Agent.
-	2. Result showing Time taken per Asset Group.
 	
 	Location : \src\testresults\ dynamic-folder (Page Assets.xls)	
 
+	1. Result showing Size of each Asset group tested in different User Agent.
+
 	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-1.PNG)
+	
+	2. Result showing Time taken per Asset Group.
+	
 	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-2.PNG)
 	
 ## Conclusion:

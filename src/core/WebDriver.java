@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Proxy;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.CapabilityType;
@@ -26,6 +28,7 @@ import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
 
+@SuppressWarnings("unused")
 public class WebDriver {
 	public long[] ars = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	String pathstr = null;
@@ -65,13 +68,22 @@ public class WebDriver {
 					useragent = prop.getProperty("default_devicetype"); 
 				}
 			
-			/*			Associating Browser Capabilities	*/		
+			/*			Associating Browser Capabilities		*/
 				FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities); 
+				driver = new FirefoxDriver(capabilities);  
+				
+			/*		Chrome Browser Implementation		*/
+			/*    ChromeOptions options = new ChromeOptions();
+				options.addArguments("--user-agent=",useragent);
+				System.setProperty("webdriver.chrome.driver","G:\\Softwares Setup Files\\Softwares\\New folder\\chromedriver.exe");
+				capabilities = new DesiredCapabilities().chrome();
+				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+				capabilities.setCapability(CapabilityType.PROXY, proxy);
+				driver = new ChromeDriver(capabilities);	*/
 			 
 			/*			Capturing Performance Assets	*/		
 			server.newHar(url);

@@ -6,11 +6,13 @@
   	
   	Can't this be done by a Firebug or a developer tool? Yes, it can be done, just imagine you are a company playing with thousands of dynamic URLs, how would you do it with ease?
   	
-  	Another example of a e-commerce reatil engineering team wants to look for page assets based on variety of keywords, how it can be done in an automated fashion?
+  	Another example of a e-commerce retail engineering team wants to look for page assets based on variety of keywords, how it can be done in an automated fashion?
 
 ## Input:
 
-	Webpage URL whose performance has to be analysed is entered in spreasheet and it is used as input to this process.
+	Webpage URL whose performance has to be analyzed is entered in spreadsheet and it is used as input to this process.
+	Device type (for example desktop or mobile/tablet)
+	User Agent (for example iPhone, iPad, Android Mobile, Android Tablet).
 
 ## Tools Used:
 
@@ -23,7 +25,8 @@
 ## Output:
 
 	1. HAR (HTTP Archive) File. HAR captures the finer details of various page assets like HTML, Image, Java-Script, CSS, Media and Font.
-	2. The categorized assets sizes are stored into an excel
+	2. The categorized assets sizes which is tested with different device types and different user agent are stored into an excel.
+	3. Time taken per asset group on different user agents are stored into an excel.
 The above are abailable under ../src/testresults/<date_time> of execution.
 
 ## Quick Overview of Maven Dependencies
@@ -89,7 +92,7 @@ The above are abailable under ../src/testresults/<date_time> of execution.
         
 ## How to Use it:
 
-* The user's input (URL's) are to be given in Spreadsheet, present in the location,
+* The user's input (URL's), Device Type (for example desktop or mobile/tablet), User Agent (for example iPhone, iPad, Android Mobile, Android Tablet) are to be given in Spreadsheet, present in the location,
 	
 	Location : \src\data\ input-file (Core.xls)
 	
@@ -102,10 +105,14 @@ The above are abailable under ../src/testresults/<date_time> of execution.
 	![Run Application](https://github.com/zucisystems/pageassetsize/blob/master/images/Run%20Application.jpg)
 	
 * The test results are stored in the location in Spreadsheet,
+	1. Result showing Size of each Asset group tested in different User Agent.
+	2. Result showing Time taken per Asset Group.
 	
-	Location : \src\testresults\ dynamic-folder (Page Assets.xls)
+	Location : \src\testresults\ dynamic-folder (Page Assets.xls)	
 
-	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap.PNG)
+	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-1.PNG)
+		
+	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-2.PNG)
 	
 ## Conclusion:
 

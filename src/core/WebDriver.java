@@ -69,6 +69,7 @@ public class WebDriver {
 				}
 			
 			/*			Associating Browser Capabilities		*/
+			/*			Firefox Browser Implementation			*/    
 				FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
@@ -76,16 +77,16 @@ public class WebDriver {
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				driver = new FirefoxDriver(capabilities);  
 				
-			/*		Chrome Browser Implementation		*/
+			/*			Chrome Browser Implementation			*/
 			/*    ChromeOptions options = new ChromeOptions();
 				options.addArguments("--user-agent=",useragent);
-				System.setProperty("webdriver.chrome.driver","G:\\Softwares Setup Files\\Softwares\\New folder\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
 				capabilities = new DesiredCapabilities().chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				driver = new ChromeDriver(capabilities);	*/
 			 
-			/*			Capturing Performance Assets	*/		
+			/*			Capturing Performance Assets			*/		
 			server.newHar(url);
 			driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
 			driver.get(url);

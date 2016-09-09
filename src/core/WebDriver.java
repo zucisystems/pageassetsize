@@ -49,34 +49,23 @@ public class WebDriver {
 			is = new FileInputStream("useragent.properties");
 			prop.load(is);
 				
-			    if(devicetype.contains("desktop")){
-					devicetype = prop.getProperty("desktop");
-				} else if(devicetype.contains("mobile/tablet")){
-					devicetype = prop.getProperty("mobile/tablet");
+			    if(devicetype.isEmpty() && useragent.isEmpty()){
+					useragent = prop.getProperty("default_devicetype");
+				} else if(devicetype.contains("desktop") && useragent.isEmpty()){
+					useragent = prop.getProperty("desktop");
+				} else if(devicetype.contains("mobile/tablet") && useragent.contains("android_mobile")){
+					useragent = prop.getProperty("Android_Mobile");
+				} else if(devicetype.contains("mobile/tablet") && useragent.contains("android_tablet")){
+					useragent = prop.getProperty("Android_Tablet");
+				} else if(devicetype.contains("mobile/tablet") && useragent.contains("iphone")){
+		        	useragent = prop.getProperty("iPhone");
+				} else if(devicetype.contains("mobile/tablet") && useragent.contains("ipad")){
+					useragent = prop.getProperty("iPad");
+		        } else if(devicetype.contains("mobile/tablet") && useragent.isEmpty()) {
+				   	useragent = prop.getProperty("default_useragent");
 				} else {
-					devicetype = prop.getProperty("default_devicetype");
-				} 
-			
-				 if(devicetype.contains("desktop")){
-						useragent = prop.getProperty("desktop");
-					} else if(devicetype.contains("mobile/tablet")){
-						if(useragent.contains("android_mobile")){
-							useragent = prop.getProperty("Android_Mobile");
-							System.out.println(useragent);
-						} else if(useragent.contains("android_tablet")){
-				   			useragent = prop.getProperty("Android_Tablet");
-				   			System.out.println(useragent);
-				   		} else if(useragent.contains("iphone")){
-		         			useragent = prop.getProperty("iPhone");
-		         			System.out.println(useragent);
-				    	} else if(useragent.contains("ipad")){
-				   			useragent = prop.getProperty("iPad");
-				   			System.out.println(useragent);
-		        		} else {
-				        	useragent = prop.getProperty("default_useragent");
-				        	System.out.println(useragent);
-				           }
-					}
+				        	   
+				}
 			
 			/*			Associating Browser Capabilities	*/		
 				FirefoxProfile profile = new FirefoxProfile();

@@ -111,6 +111,7 @@ The above are abailable under ../src/testresults/<date_time> of execution.
 	Location : \src\testresults\ dynamic-folder (Page Assets.xls)	
 
 	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-1.PNG)
+	
 		
 	![Result-Snap](https://github.com/zucisystems/pageassetsize/blob/master/images/Result-Snap-2.PNG)
 	

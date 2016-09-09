@@ -32,7 +32,7 @@ public class WebDriver {
 	FileInputStream fis = null;
 	
 	@SuppressWarnings({"static-access" })
-	public void harGenerator(String url, String sNo, String useragent, String devicetype, String path) throws NoSuchElementException, Exception {
+	public void harGenerator(String url, String sNo, String devicetype, String useragent, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
 		DesiredCapabilities capabilities = null;
@@ -49,10 +49,8 @@ public class WebDriver {
 			is = new FileInputStream("useragent.properties");
 			prop.load(is);
 				
-			    if(devicetype.isEmpty() && useragent.isEmpty()){
-					useragent = prop.getProperty("default_devicetype");
-				} else if(devicetype.contains("desktop") && useragent.isEmpty()){
-					useragent = prop.getProperty("desktop");
+			    if(devicetype.contains("desktop")){
+					useragent = prop.getProperty("Desktop");
 				} else if(devicetype.contains("mobile/tablet") && useragent.contains("android_mobile")){
 					useragent = prop.getProperty("Android_Mobile");
 				} else if(devicetype.contains("mobile/tablet") && useragent.contains("android_tablet")){
@@ -64,7 +62,7 @@ public class WebDriver {
 		        } else if(devicetype.contains("mobile/tablet") && useragent.isEmpty()) {
 				   	useragent = prop.getProperty("default_useragent");
 				} else {
-				        	   
+					useragent = prop.getProperty("default_devicetype"); 
 				}
 			
 			/*			Associating Browser Capabilities	*/		

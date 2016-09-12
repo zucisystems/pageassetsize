@@ -70,21 +70,21 @@ public class WebDriver {
 			
 			/*			Associating Browser Capabilities		*/
 			/*			Firefox Browser Implementation			*/    
-				FirefoxProfile profile = new FirefoxProfile();
+			/*	FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities);  
+				driver = new FirefoxDriver(capabilities);  */
 				
 			/*			Chrome Browser Implementation			*/
-			/*    ChromeOptions options = new ChromeOptions();
+			    ChromeOptions options = new ChromeOptions();
 				options.addArguments("--user-agent=",useragent);
 				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
 				capabilities = new DesiredCapabilities().chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new ChromeDriver(capabilities);	*/
+				driver = new ChromeDriver(capabilities);	
 			 
 			/*			Capturing Performance Assets			*/		
 			server.newHar(url);

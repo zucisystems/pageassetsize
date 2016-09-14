@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -77,13 +78,15 @@ public class WebDriver {
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				driver = new FirefoxDriver(capabilities);  */
 				
-			/*			Chrome Browser Implementation			*/
-			    ChromeOptions options = new ChromeOptions();
-				options.addArguments("--user-agent=",useragent);
+			/*			Chrome Browser Implementation			*/ 
 				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--user-agent="+ useragent);
+				options.addArguments("--start-maximized");
 				capabilities = new DesiredCapabilities().chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
+				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				driver = new ChromeDriver(capabilities);	
 			 
 			/*			Capturing Performance Assets			*/		

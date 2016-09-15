@@ -76,7 +76,8 @@ public class WebDriver {
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities);  */
+				driver = new FirefoxDriver(capabilities);
+				driver.manage().window().maximize();	*/
 				
 			/*			Chrome Browser Implementation			*/ 
 				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
@@ -86,7 +87,6 @@ public class WebDriver {
 				capabilities = new DesiredCapabilities().chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				driver = new ChromeDriver(capabilities);	
 			 
 			/*			Capturing Performance Assets			*/		

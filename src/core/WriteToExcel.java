@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class WriteToExcel {
 	
-	public void writeToExcel(HSSFSheet sheet1,HSSFSheet sheet2, long[] a, String tempSlNo, String tempURL, String tempdt, String tempua, int writeExcelCounter){
+	public void writeToExcel(HSSFSheet sheet1,HSSFSheet sheet2, long[] a, String tempSlNo, String tempURL, String tempdt, String tempua, String tempbt, int writeExcelCounter){
         
         // Create Heading
         boolean headerCreated = false;
@@ -19,14 +19,15 @@ public class WriteToExcel {
 	        rowhead.createCell(1).setCellValue("URL");
 	        rowhead.createCell(2).setCellValue("Device Type");
 	        rowhead.createCell(3).setCellValue("User Agent");
-	        rowhead.createCell(4).setCellValue("HTML Size (in KB)");
-	        rowhead.createCell(5).setCellValue("CSS Size (in KB)");
-	        rowhead.createCell(6).setCellValue("JS Size (in KB)");
-	        rowhead.createCell(7).setCellValue("XHR Size (in KB)");
-	        rowhead.createCell(8).setCellValue("Image Size (in KB)");
-	        rowhead.createCell(9).setCellValue("Media Size (in KB)");
-	        rowhead.createCell(10).setCellValue("Font Size (in KB)");
-	        rowhead.createCell(11).setCellValue("Other Size (in KB)");
+	        rowhead.createCell(4).setCellValue("Browser Type");
+	        rowhead.createCell(5).setCellValue("HTML Size (in KB)");
+	        rowhead.createCell(6).setCellValue("CSS Size (in KB)");
+	        rowhead.createCell(7).setCellValue("JS Size (in KB)");
+	        rowhead.createCell(8).setCellValue("XHR Size (in KB)");
+	        rowhead.createCell(9).setCellValue("Image Size (in KB)");
+	        rowhead.createCell(10).setCellValue("Media Size (in KB)");
+	        rowhead.createCell(11).setCellValue("Font Size (in KB)");
+	        rowhead.createCell(12).setCellValue("Other Size (in KB)");
 	        headerCreated = true;
         }
         	rowhead = sheet1.createRow(writeExcelCounter);
@@ -34,14 +35,15 @@ public class WriteToExcel {
         	rowhead.createCell(1).setCellValue(tempURL);
         	rowhead.createCell(2).setCellValue(tempdt);
         	rowhead.createCell(3).setCellValue(tempua);
-        	rowhead.createCell(4).setCellValue(a[0]);
-        	rowhead.createCell(5).setCellValue(a[1]);
-        	rowhead.createCell(6).setCellValue(a[2]);
-        	rowhead.createCell(7).setCellValue(a[3]); 
-        	rowhead.createCell(8).setCellValue(a[4]);  
-        	rowhead.createCell(9).setCellValue(a[5]);  
-        	rowhead.createCell(10).setCellValue(a[6]);  
-        	rowhead.createCell(11).setCellValue(a[7]);
+        	rowhead.createCell(4).setCellValue(tempbt);
+        	rowhead.createCell(5).setCellValue(a[0]);
+        	rowhead.createCell(6).setCellValue(a[1]);
+        	rowhead.createCell(7).setCellValue(a[2]);
+        	rowhead.createCell(8).setCellValue(a[3]); 
+        	rowhead.createCell(9).setCellValue(a[4]);  
+        	rowhead.createCell(10).setCellValue(a[5]);  
+        	rowhead.createCell(11).setCellValue(a[6]);  
+        	rowhead.createCell(12).setCellValue(a[7]);
 	boolean headerCreated1 = false;
     Row rowhead1 = null;
 	if(!headerCreated1){

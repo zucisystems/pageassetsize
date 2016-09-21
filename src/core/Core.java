@@ -42,6 +42,7 @@ public class Core {
 				String tempURL = perfAssetsData.URL;
 				String tempdt = perfAssetsData.DeviceType;
 				String tempua = perfAssetsData.UserAgent;
+				String tempbt = perfAssetsData.BrowserType;
 	
 				perfAssetsData.URL = perfAssetsData.URL == null ? "" : perfAssetsData.URL.trim();
 				if(perfAssetsData.URL.equals("") ){
@@ -50,7 +51,7 @@ public class Core {
 
 				/* Core Method calling for HAR Generation and Value Reading */
 				WebDriver wd = new WebDriver();
-				wd.harGenerator(perfAssetsData.URL, perfAssetsData.sNo,perfAssetsData.DeviceType, perfAssetsData.UserAgent, path);
+				wd.harGenerator(perfAssetsData.URL, perfAssetsData.sNo,perfAssetsData.DeviceType, perfAssetsData.UserAgent, perfAssetsData.BrowserType, path);
 				a = wd.harReader();
 				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[0]+" , "+a[1]+" , "+a[2]+" , "+a[3]+" , "+a[4]+" , "+a[5]+" , "+a[6]+" , "+a[7]);
 				System.out.println(campaignCounter+" ) "+perfAssetsData.URL+ " : "+a[8]+" , "+a[9]+" , "+a[10]+" , "+a[11]+" , "+a[12]+" , "+a[13]+" , "+a[14]+" , "+a[15]);
@@ -60,7 +61,7 @@ public class Core {
 				perfAssetsData.fetchHomeTestData();
 
 				/* Write Values to Excel */
-				wxl.writeToExcel(sheet1,sheet2,a,tempSlNo,tempURL,tempdt,tempua,writeExcelCounter);
+				wxl.writeToExcel(sheet1,sheet2,a,tempSlNo,tempURL,tempdt,tempua,tempbt,writeExcelCounter);
 				writeExcelCounter++;
 			}
 			wxl.writeExcel(str, wb, path);

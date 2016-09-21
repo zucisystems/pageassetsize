@@ -36,7 +36,7 @@ public class WebDriver {
 	FileInputStream fis = null;
 	
 	@SuppressWarnings({"static-access" })
-	public void harGenerator(String url, String sNo, String devicetype, String useragent, String path) throws NoSuchElementException, Exception {
+	public void harGenerator(String url, String sNo, String devicetype, String useragent, String browsertype, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
 		DesiredCapabilities capabilities = null;
@@ -71,15 +71,15 @@ public class WebDriver {
 			
 			/*			Associating Browser Capabilities		*/
 			/*			Firefox Browser Implementation			*/    
-			/*	FirefoxProfile profile = new FirefoxProfile();
+			    if (browsertype.contains("firefox")){
+				FirefoxProfile profile = new FirefoxProfile();
 				profile.setPreference("general.useragent.override",useragent);
 				capabilities = new DesiredCapabilities().firefox();
 				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				driver = new FirefoxDriver(capabilities);
-				driver.manage().window().maximize();	*/
-				
-			/*			Chrome Browser Implementation			*/ 
+				driver.manage().window().maximize();
+			    } else if(browsertype.contains("chrome")){
 				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--user-agent="+ useragent);
@@ -87,8 +87,12 @@ public class WebDriver {
 				capabilities = new DesiredCapabilities().chrome();
 				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 				capabilities.setCapability(CapabilityType.PROXY, proxy);
+				capabilities.setCapability("chrome.setProxyByServer", false);
 				driver = new ChromeDriver(capabilities);	
-			 
+			    } else {
+			    	
+			    }
+				
 			/*			Capturing Performance Assets			*/		
 			server.newHar(url);
 			driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
@@ -143,9 +147,9 @@ public class WebDriver {
 	    {
 	          List<HarWarning> warnings = new ArrayList<HarWarning>();
 	          HarLog log = r.readHarFile(fis, warnings);
-	        //HarLog log = r.readHarFile(fis);
+	       // HarLog log = r.readHarFile(fis);
 	       // for (HarWarning w : warnings) {
-	        // System.out.println("File:" + fis+ " - Warning:" + w);
+	       // 		System.out.println("File:" + fis+ " - Warning:" + w);
 	      
 	      List<HarEntry> entries = log.getEntries().getEntries();
 	      for (HarEntry entry : entries){
@@ -180,7 +184,8 @@ public class WebDriver {
 	    	   otherTime = otherTime + entry.getTime();
 	       }
 	      }  
-	     // } 
+	 //   }
+	      
 	      htmlSize = htmlSize/1024;
 	      cssSize = cssSize/1024;
 	      jsSize = jsSize/1024;
@@ -220,6 +225,6 @@ public class WebDriver {
 	} catch (Exception e){
 		e.printStackTrace();
 	}        
-	return ars;
+	    return ars;
 	}
 }

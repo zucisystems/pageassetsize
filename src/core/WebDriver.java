@@ -69,26 +69,25 @@ public class WebDriver {
 					useragent = prop.getProperty("default_devicetype"); 
 				}
 			
-			/*			Associating Browser Capabilities		*/
-			/*			Firefox Browser Implementation			*/    
-			    if (browsertype.contains("firefox")){
-				FirefoxProfile profile = new FirefoxProfile();
-				profile.setPreference("general.useragent.override",useragent);
-				capabilities = new DesiredCapabilities().firefox();
-				capabilities .setCapability(FirefoxDriver.PROFILE, profile);
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				driver = new FirefoxDriver(capabilities);
-				driver.manage().window().maximize();
+			/*			Associating Browser Capabilities		*/   
+			    if (browsertype.contains("firefox")  || browsertype.isEmpty()){
+			    	FirefoxProfile profile = new FirefoxProfile();
+			    	profile.setPreference("general.useragent.override",useragent);
+			    	capabilities = new DesiredCapabilities().firefox();
+			    	capabilities .setCapability(FirefoxDriver.PROFILE, profile);
+			    	capabilities.setCapability(CapabilityType.PROXY, proxy);
+			    	driver = new FirefoxDriver(capabilities);
+			    	driver.manage().window().maximize();
 			    } else if(browsertype.contains("chrome")){
-				System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--user-agent="+ useragent);
-				options.addArguments("--start-maximized");
-				capabilities = new DesiredCapabilities().chrome();
-				capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				capabilities.setCapability("chrome.setProxyByServer", false);
-				driver = new ChromeDriver(capabilities);	
+			    	System.setProperty("webdriver.chrome.driver","E:\\Project Softwares\\chromedriver.exe");
+			    	ChromeOptions options = new ChromeOptions();
+			    	options.addArguments("--user-agent="+ useragent);
+			    	options.addArguments("--start-maximized");
+			    	capabilities = new DesiredCapabilities().chrome();
+			    	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			    	capabilities.setCapability(CapabilityType.PROXY, proxy);
+			    	capabilities.setCapability("chrome.setProxyByServer", false);
+			    	driver = new ChromeDriver(capabilities);	
 			    } else {
 			    	
 			    }

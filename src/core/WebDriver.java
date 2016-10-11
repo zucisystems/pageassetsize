@@ -50,7 +50,7 @@ public class WebDriver {
 			/*			Get the Selenium Proxy Object			*/
 			Proxy proxy = ClientUtil.createSeleniumProxy(server);
 			
-			is = new FileInputStream("useragent.properties");
+			/*	is = new FileInputStream("useragent.properties");
 			prop.load(is);
 				
 			    if(devicetype.contains("desktop")){
@@ -67,15 +67,20 @@ public class WebDriver {
 				   	useragent = prop.getProperty("default_useragent");
 				} else {
 					useragent = prop.getProperty("default_devicetype"); 
-				}
+				}	*/
 			
 			/*			Associating Browser Capabilities		*/   
 			    if (browsertype.contains("firefox")  || browsertype.isEmpty()){
 			    	FirefoxProfile profile = new FirefoxProfile();
-			    	profile.setPreference("general.useragent.override",useragent);
+			    	//profile.setPreference("general.useragent.override",useragent);
 			    	capabilities = new DesiredCapabilities().firefox();
 			    	capabilities .setCapability(FirefoxDriver.PROFILE, profile);
 			    	capabilities.setCapability(CapabilityType.PROXY, proxy);
+			    	capabilities.setCapability("platformName", "Android");
+			        capabilities.setCapability("deviceName", "Samsung Galaxy S4 Emulator");
+			        capabilities.setCapability("platformVersion", "4.4");
+			        capabilities.setCapability("app", "http://saucelabs.com/example_files/ContactManager.apk");
+			        capabilities.setCapability("browserName", "");
 			    	driver = new FirefoxDriver(capabilities);
 			    	driver.manage().window().maximize();
 			    } else if(browsertype.contains("chrome")){

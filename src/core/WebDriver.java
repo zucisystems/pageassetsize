@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +26,7 @@ import edu.umass.cs.benchlab.har.HarEntry;
 import edu.umass.cs.benchlab.har.HarLog;
 import edu.umass.cs.benchlab.har.HarWarning;
 import edu.umass.cs.benchlab.har.tools.HarFileReader;
+import io.appium.java_client.android.AndroidDriver;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
@@ -35,7 +37,7 @@ public class WebDriver {
 	String pathstr = null;
 	FileInputStream fis = null;
 	
-	@SuppressWarnings({"static-access" })
+	@SuppressWarnings({"static-access", "rawtypes" })
 	public void harGenerator(String url, String sNo, String devicetype, String useragent, String browsertype, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
@@ -70,17 +72,12 @@ public class WebDriver {
 				}	*/
 			
 			/*			Associating Browser Capabilities		*/   
-			    if (browsertype.contains("firefox")  || browsertype.isEmpty()){
+			/*   if (browsertype.contains("firefox")  || browsertype.isEmpty()){
 			    	FirefoxProfile profile = new FirefoxProfile();
 			    	//profile.setPreference("general.useragent.override",useragent);
 			    	capabilities = new DesiredCapabilities().firefox();
-			    	capabilities .setCapability(FirefoxDriver.PROFILE, profile);
+			    	capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 			    	capabilities.setCapability(CapabilityType.PROXY, proxy);
-			    	capabilities.setCapability("platformName", "Android");
-			        capabilities.setCapability("deviceName", "Samsung Galaxy S4 Emulator");
-			        capabilities.setCapability("platformVersion", "4.4");
-			        capabilities.setCapability("app", "http://saucelabs.com/example_files/ContactManager.apk");
-			        capabilities.setCapability("browserName", "");
 			    	driver = new FirefoxDriver(capabilities);
 			    	driver.manage().window().maximize();
 			    } else if(browsertype.contains("chrome")){
@@ -95,7 +92,36 @@ public class WebDriver {
 			    	driver = new ChromeDriver(capabilities);	
 			    } else {
 			    	
-			    }
+			    }	*/
+			if (devicetype.contains("desktop") || devicetype.isEmpty()){
+				FirefoxProfile profile = new FirefoxProfile();
+		    	capabilities = new DesiredCapabilities().firefox();
+		    	capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+		    	capabilities.setCapability(CapabilityType.PROXY, proxy);
+		    	driver = new FirefoxDriver(capabilities);
+		    	driver.manage().window().maximize();
+			}	else if(devicetype.contains("mobile/tablet")){
+				//File appDir = new File("F:\\Project Softwares");
+				File app = new File("F:\\Project Softwares\\org.mozilla.firefox.apk");
+				// Very important properties you need for Appium to work, change as per
+				// SDK and device name
+				capabilities = new DesiredCapabilities();
+				capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+				capabilities.setCapability(CapabilityType.PLATFORM, "Android");
+				capabilities.setCapability(CapabilityType.VERSION, "5.1.1");
+				capabilities.setCapability("deviceName", "ZuciTest");
+				capabilities.setCapability("autoLaunch",true);
+				capabilities.setCapability("automationName", "Appium");
+				capabilities.setCapability("app", app.getAbsolutePath());
+				
+				capabilities.setCapability("appPackage", "org.mozilla.firefox");
+				capabilities.setCapability("appActivity", "org.mozilla.gecko.BrowserApp");
+				// The URL where the hub will start
+				driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			} else{
+				
+			}
 				
 			/*			Capturing Performance Assets			*/		
 			server.newHar(url);

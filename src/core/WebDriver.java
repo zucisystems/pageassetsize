@@ -119,6 +119,8 @@ public class WebDriver {
 				// The URL where the hub will start
 				driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				//Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+				//startActivity(myIntent);
 			} else{
 				
 			}

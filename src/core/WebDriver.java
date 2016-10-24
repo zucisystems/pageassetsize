@@ -27,6 +27,7 @@ import edu.umass.cs.benchlab.har.HarLog;
 import edu.umass.cs.benchlab.har.HarWarning;
 import edu.umass.cs.benchlab.har.tools.HarFileReader;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
@@ -103,15 +104,12 @@ public class WebDriver {
 			}	else if(devicetype.contains("mobile/tablet")){
 				//File appDir = new File("F:\\Project Softwares");
 				File app = new File("F:\\Project Softwares\\org.mozilla.firefox.apk");
-				// Very important properties you need for Appium to work, change as per
-				// SDK and device name
 				capabilities = new DesiredCapabilities();
-				capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-				capabilities.setCapability(CapabilityType.PLATFORM, "Android");
-				capabilities.setCapability(CapabilityType.VERSION, "5.1.1");
-				capabilities.setCapability("deviceName", "ZuciTest");
-				capabilities.setCapability("autoLaunch",true);
-				capabilities.setCapability("automationName", "Appium");
+				capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
+				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "ZuciTest");
+				capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
+				capabilities.setCapability(MobileCapabilityType.PLATFORM, "Android");
+				capabilities.setCapability(MobileCapabilityType.VERSION, "6.0");
 				capabilities.setCapability("app", app.getAbsolutePath());
 				
 				capabilities.setCapability("appPackage", "org.mozilla.firefox");

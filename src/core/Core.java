@@ -14,7 +14,7 @@ public class Core {
 	 * @throws Exception
 	 */
 	
-	  public static final String USERNAME = "amarnath.m@zucisystems.com";
+	  public static final String USERNAME = "mathisekaramarnath+1@gmail.com";
 	  public static final String ACCESS_KEY = "Zuci@456";
 	  public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 	  

@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,7 +37,7 @@ public class WebDriver {
 	String pathstr = null;
 	FileInputStream fis = null;
 	
-	@SuppressWarnings({"static-access", "rawtypes" })
+	@SuppressWarnings({"static-access" })
 	public void harGenerator(String url, String sNo, String devicetype, String useragent, String browsertype, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
@@ -103,22 +102,21 @@ public class WebDriver {
 		    	driver.manage().window().maximize();
 			}	else if(devicetype.contains("mobile/tablet")){
 				//File appDir = new File("F:\\Project Softwares");
-				File app = new File("F:\\Project Softwares\\org.mozilla.firefox.apk");
-				capabilities = new DesiredCapabilities();
-				capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
-				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "ZuciTest");
-				capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
-				capabilities.setCapability(MobileCapabilityType.PLATFORM, "Android");
-				capabilities.setCapability(MobileCapabilityType.VERSION, "6.0");
-				capabilities.setCapability("app", app.getAbsolutePath());
+				//File app = new File("F:\\Project Softwares\\org.mozilla.firefox.apk");
+				capabilities = new DesiredCapabilities().android();
+				//capabilities.setCapability("automationName", "Appium");
+				capabilities.setCapability("deviceName", "Android Emulator");
+				//capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+				capabilities.setCapability(CapabilityType.PLATFORM, "windows");
+				capabilities.setCapability(CapabilityType.VERSION, "5.1");
+				capabilities.setCapability("deviceOrientation", "portrait");
+				//capabilities.setCapability("app", app.getAbsolutePath());
 				
-				capabilities.setCapability("appPackage", "org.mozilla.firefox");
-				capabilities.setCapability("appActivity", "org.mozilla.gecko.BrowserApp");
+				//capabilities.setCapability("appPackage", "org.mozilla.firefox");
+				//capabilities.setCapability("appActivity", "org.mozilla.gecko.BrowserApp");
 				// The URL where the hub will start
-				driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				//Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-				//startActivity(myIntent);
+				//driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+				//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			} else{
 				
 			}

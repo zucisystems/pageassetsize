@@ -37,7 +37,7 @@ public class WebDriver {
 	String pathstr = null;
 	FileInputStream fis = null;
 	
-	@SuppressWarnings({"static-access" })
+	@SuppressWarnings({"static-access", "rawtypes" })
 	public void harGenerator(String url, String sNo, String devicetype, String useragent, String browsertype, String path) throws NoSuchElementException, Exception {
 		
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
@@ -101,35 +101,32 @@ public class WebDriver {
 		    	driver = new FirefoxDriver(capabilities);
 		    	driver.manage().window().maximize();
 			}	else if(devicetype.contains("mobile/tablet")){
-				//File appDir = new File("F:\\Project Softwares");
-				//File app = new File("F:\\Project Softwares\\org.mozilla.firefox.apk");
-				capabilities = new DesiredCapabilities().android();
-				//capabilities.setCapability("automationName", "Appium");
-				capabilities.setCapability("deviceName", "Android Emulator");
-				//capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-				capabilities.setCapability(CapabilityType.PLATFORM, "windows");
-				capabilities.setCapability(CapabilityType.VERSION, "5.1");
-				capabilities.setCapability("deviceOrientation", "portrait");
-				//capabilities.setCapability("app", app.getAbsolutePath());
-				
-				//capabilities.setCapability("appPackage", "org.mozilla.firefox");
-				//capabilities.setCapability("appActivity", "org.mozilla.gecko.BrowserApp");
+				capabilities = new DesiredCapabilities();
+				capabilities.setCapability(CapabilityType.BROWSER_NAME, "Browser");
+				capabilities.setCapability("automationName", "Appium");
+				capabilities.setCapability(CapabilityType.PLATFORM, "Android");
+				capabilities.setCapability(CapabilityType.PROXY, proxy);
+				capabilities.setCapability(CapabilityType.VERSION, "4.4.1");
+				capabilities.setCapability("deviceName", "Zu");
+				capabilities.setCapability("appPackage", "com.android.browser");
+				capabilities.setCapability("appActivity", "com.android.browser.BrowserActivity");
+				capabilities.setCapability("noReset", false);
+			
 				// The URL where the hub will start
-				//driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-				//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			} else{
 				
 			}
 				
 			/*			Capturing Performance Assets			*/		
 			server.newHar(url);
-			driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			driver.get(url);
 			
 			/*			Storing assets to HAR			*/
 			try{
-				//Thread.sleep(20000);
-				driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 				Har har = server.getHar();
 				
 				pathstr = path+File.separator+sNo+".har";

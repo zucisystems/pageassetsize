@@ -43,7 +43,7 @@ public class WebDriver {
 		BrowserMobProxyServer server = new BrowserMobProxyServer();
 		DesiredCapabilities capabilities = null;
 		RemoteWebDriver driver = null;
-		Properties prop = new Properties();
+		//Properties prop = new Properties();
 		InputStream is = null;
 		
 		try{
@@ -101,40 +101,48 @@ public class WebDriver {
 		    	driver = new FirefoxDriver(capabilities);
 		    	driver.manage().window().maximize();
 			}	else if(devicetype.contains("mobile/tablet")){
-				capabilities = new DesiredCapabilities();
-				capabilities.setCapability(CapabilityType.BROWSER_NAME, "Browser");
+				capabilities = new DesiredCapabilities().android();
 				capabilities.setCapability("automationName", "Appium");
-				capabilities.setCapability(CapabilityType.PLATFORM, "Android");
-				capabilities.setCapability(CapabilityType.PROXY, proxy);
-				capabilities.setCapability(CapabilityType.VERSION, "4.4.1");
+				capabilities.setCapability("platformName", "Android");
+				capabilities.setCapability("platformVersion", "4.4.1");
 				capabilities.setCapability("deviceName", "Zu");
+				capabilities.setCapability("browserName", "Browser");
+				capabilities.setCapability("newCommandTimeout", 600);
+				capabilities.setCapability(CapabilityType.PROXY, proxy);
 				capabilities.setCapability("appPackage", "com.android.browser");
 				capabilities.setCapability("appActivity", "com.android.browser.BrowserActivity");
-				capabilities.setCapability("noReset", false);
 			
 				// The URL where the hub will start
 				driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(6000, TimeUnit.SECONDS);
 			} else{
 				
 			}
 				
 			/*			Capturing Performance Assets			*/		
 			server.newHar(url);
-			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(6000, TimeUnit.SECONDS);
 			driver.get(url);
+			
+			System.out.println("Before Problem");
+			System.out.println(server.toString());
+			System.out.println("After Problem");
 			
 			/*			Storing assets to HAR			*/
 			try{
-				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				//driver.manage().timeouts().implicitlyWait(6000, TimeUnit.SECONDS);
 				Har har = server.getHar();
+				
+				System.out.println("After the Problem");
 				
 				pathstr = path+File.separator+sNo+".har";
 				File file = new File(pathstr);
 				file.getParentFile().mkdirs();
 	    		file.createNewFile();
 				
-				FileOutputStream fos = new FileOutputStream(file);
+	    		System.out.println("After the Main Problem");
+				
+	    		FileOutputStream fos = new FileOutputStream(file);
 				har.writeTo(fos);
 			}catch(Exception e){
 				e.printStackTrace();
